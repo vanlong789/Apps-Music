@@ -21,6 +21,7 @@
   .player {
     position: relative;
     max-width: 480px;
+    max-height: 820px;
     margin: 0 auto;
   }
   
@@ -42,14 +43,15 @@
     position: fixed;
     top: 0;
     width: 100%;
+    height: 100%;
     max-width: 480px;
+    max-height: 820px;
     border-bottom: 1px solid #ebebeb;
   }
   
   /* HEADER */
   header{
-      padding-bottom: 40px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
   }
   /* .login{
     margin-left: 70%;
@@ -109,6 +111,11 @@
 
 
   /*hearder thông tin bài hát*/
+  .container-scroll{
+    height: 430px;
+  }
+  
+
   .container-scroll__hinden{
     display: none;
   }
@@ -127,9 +134,6 @@
     font-size: 20px;
   }
   
-  .form-cd{
-      height: 64vh;
-  }
   /* CD */
   .cd {
     display: flex;
@@ -214,7 +218,7 @@
     margin-bottom: 10px;
   }
   .playlist {
-    height: 59vh;
+    height: 370px;
     overflow: hidden;
     overflow-y: scroll;
   }
@@ -282,6 +286,14 @@
     color: #999;
     font-size: 18px;
   }
+  
+  .footer-div{
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 10px;
+  }
+
   
   .footer{
     margin-top:20px;

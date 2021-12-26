@@ -53,33 +53,35 @@
       
           <!-- Control -->
 
-          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">    
-          <audio id="audio" src=""></audio>
-          <div class="control">
-            <div class="btn btn-repeat">
-              <i class="fas fa-redo"></i>
+          <div class="footer-div">
+            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">    
+            <audio id="audio" src=""></audio>
+            <div class="control">
+              <div class="btn btn-repeat">
+                <i class="fas fa-redo"></i>
+              </div>
+              <div class="btn btn-prev">
+                <i class="fas fa-step-backward"></i>
+              </div>
+              <div class="btn btn-toggle-play">
+                <i class="fas fa-pause playing icon-pause"></i>
+                <i class="fas fa-play icon-play"></i>
+              </div>
+              <div class="btn btn-next">
+                <i class="fas fa-step-forward"></i>
+              </div>
+              <div class="btn btn-random">
+                <i class="fas fa-random"></i>
+              </div>
             </div>
-            <div class="btn btn-prev">
-              <i class="fas fa-step-backward"></i>
+            <div class="footer">
+                <ul class="footer-list">
+                    <li class="footer-list__li"><i class="icon-list fas fa-home" onclick="onTaskBar(0)"></i></li>
+                    <li class="footer-list__li"><i class="icon-list fas fa-dumbbell" onclick="onTaskBar(1)"></i></li>
+                    <li class="footer-list__li"><i class="icon-list fab fa-youtube" onclick="onTaskBar(2)"></i></li>
+                    <li class="footer-list__li"><i class="icon-list fas fa-sliders-h" onclick="onTaskBar(3)"></i></li>
+                </ul>
             </div>
-            <div class="btn btn-toggle-play">
-              <i class="fas fa-pause playing icon-pause"></i>
-              <i class="fas fa-play icon-play"></i>
-            </div>
-            <div class="btn btn-next">
-              <i class="fas fa-step-forward"></i>
-            </div>
-            <div class="btn btn-random">
-              <i class="fas fa-random"></i>
-            </div>
-          </div>
-          <div class="footer">
-              <ul class="footer-list">
-                  <li class="footer-list__li"><i class="icon-list fas fa-home" onclick="onTaskBar(0)"></i></li>
-                  <li class="footer-list__li"><i class="icon-list fas fa-dumbbell" onclick="onTaskBar(1)"></i></li>
-                  <li class="footer-list__li"><i class="icon-list fab fa-youtube" onclick="onTaskBar(2)"></i></li>
-                  <li class="footer-list__li"><i class="icon-list fas fa-sliders-h" onclick="onTaskBar(3)"></i></li>
-              </ul>
           </div>
         </div>
       
