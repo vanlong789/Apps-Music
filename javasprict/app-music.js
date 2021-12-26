@@ -210,6 +210,7 @@ if(callBackKeyLogin !== null){
                 n;
                 editMusic(n);
                 audioMusic.play();
+                audioMusic.currentTime = 1;
             }
         }
        }else{
@@ -219,6 +220,7 @@ if(callBackKeyLogin !== null){
                 n++;
                 editMusic(n);
                 audioMusic.play();
+                audioMusic.currentTime = 1;
             }
         }
         checkRepeat = 1;
@@ -240,6 +242,7 @@ if(callBackKeyLogin !== null){
                             n = indexRamdom;
                             editMusic(n);
                             audioMusic.play();
+                            audioMusic.currentTime = 1;
                     }
                 }
         }else{
@@ -249,6 +252,7 @@ if(callBackKeyLogin !== null){
                     n++;
                     editMusic(n);
                     audioMusic.play();
+                    audioMusic.currentTime = 1;
                 }
             }
             checkRamdom = 1;
@@ -261,6 +265,7 @@ if(callBackKeyLogin !== null){
             n++;
             editMusic(n);
             audioMusic.play();
+            audioMusic.currentTime = 1;            
         }
     }
      editMusic(n)
