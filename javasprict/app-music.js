@@ -206,16 +206,20 @@ if(callBackKeyLogin !== null){
         if(checkRepeat === 2){
         repeatMusic.classList.add('active')
         audioMusic.onended = function(){
-            n;
-            editMusic(n);
-            audioMusic.play();
+            if(audioMusic.currentTime == audioMusic.duration){
+                n;
+                editMusic(n);
+                audioMusic.play();
+            }
         }
        }else{
         repeatMusic.classList.remove('active')
         audioMusic.onended = function(){
-            n++;
-            editMusic(n);
-            audioMusic.play();
+            if(audioMusic.currentTime == audioMusic.duration){
+                n++;
+                editMusic(n);
+                audioMusic.play();
+            }
         }
         checkRepeat = 1;
        } 
@@ -228,20 +232,24 @@ if(callBackKeyLogin !== null){
         if(checkRamdom === 2){
             ramdomMusic.classList.add('active');
                 audioMusic.onended = function(){
+                    if(audioMusic.currentTime == audioMusic.duration){
                         let indexRamdom;
-                    do{
-                        indexRamdom = Math.floor(Math.random() * songMusic.length);
-                    }while(indexRamdom === n)
-                        n = indexRamdom;
-                        editMusic(n);
-                        audioMusic.play();
+                        do{
+                            indexRamdom = Math.floor(Math.random() * songMusic.length);
+                        }while(indexRamdom === n)
+                            n = indexRamdom;
+                            editMusic(n);
+                            audioMusic.play();
+                    }
                 }
         }else{
             ramdomMusic.classList.remove('active');
             audioMusic.onended = function(){
-                n++;
-                editMusic(n);
-                audioMusic.play();
+                if(audioMusic.currentTime == audioMusic.duration){
+                    n++;
+                    editMusic(n);
+                    audioMusic.play();
+                }
             }
             checkRamdom = 1;
         }
@@ -249,9 +257,11 @@ if(callBackKeyLogin !== null){
 
     //xử lý sau khi hết bài hát nó sẽ phát bài tiếp theo
     audioMusic.onended = function(){
-        n++;
-        editMusic(n);
-        audioMusic.play();
+        if(audioMusic.currentTime == audioMusic.duration){
+            n++;
+            editMusic(n);
+            audioMusic.play();
+        }
     }
      editMusic(n)
  }
