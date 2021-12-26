@@ -27,7 +27,6 @@ const fromArray = [];
 const KEY_FROM = 'CKT_ARRAY';//tạo 1 biến key
 const CALL_KEY_LOGIN = 'KEY_LOGIN'
 const callBackKeyLogin = JSON.parse(localStorage.getItem(CALL_KEY_LOGIN))
-console.log(callBackKeyLogin);
 
 
 //nếu callBackeyLogin này mà khác null login bên trong sẽ được thực hiện

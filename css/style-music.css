@@ -111,9 +111,9 @@
 
 
   /*hearder thông tin bài hát*/
-  .container-scroll{
+  /* .container-scroll{
     height: 430px;
-  }
+  } */
   
 
   .container-scroll__hinden{
@@ -291,7 +291,9 @@
     position: fixed;
     left: 16px;
     right: 16px;
+    max-width: 460px;
     bottom: 10px;
+    margin: 0 auto;
   }
 
   
