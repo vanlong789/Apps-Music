@@ -1,0 +1,305 @@
+:root {
+    --primary-color: #ec1f55;
+    --text-color: #333;
+  }
+  
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+  }
+  
+  body {
+    background-color: #f5f5f5;
+  }
+  
+  html {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .player {
+    position: relative;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  
+  .player .icon-pause {
+    display: none;
+  }
+  
+  .player.playing .icon-pause {
+    display: inline-block;
+  }
+  
+  .player.playing .icon-play {
+    display: none;
+  }
+  
+  .dashboard {
+    padding: 16px 16px 14px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 480px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  
+  /* HEADER */
+  header{
+      padding-bottom: 40px;
+      margin-bottom: 10px;
+  }
+  /* .login{
+    margin-left: 70%;
+  } */
+  .login-list{
+      list-style: none;
+      display: flex;
+      align-items: center;
+      position: relative;
+  }
+  .login-list__li{
+      width: 32px;
+      height: 32px;
+      display: block;
+      cursor: pointer;
+  }
+  .login-list__li:nth-child(2){
+      padding-left: 5px;
+  }
+  .login-list__span{
+      line-height: 32px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: #ec1f55;
+  }
+  .postion{
+      position: absolute;
+      top: 26px;
+      left: 31px;
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      text-align: center;
+      border-radius: 1pc;
+      border: 2px solid #ec1f55;
+      box-shadow: 0px 0px 0.5px;
+      background-color: #f5f5f5;
+      display: none;
+      transition: 0.9s;
+      cursor: pointer;
+  }
+  .postion.open{
+    display: block;
+  }
+  .postion a{
+      text-decoration: none;
+      color: var(--text-color);     
+  }
+  .postion::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 7px;
+    top: -9px;
+    left: 0px;
+  }
+
+
+  /*hearder thông tin bài hát*/
+  .container-scroll__hinden{
+    display: none;
+  }
+  .hearder {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .hearder h4 {
+    color: var(--primary-color);
+    font-size: 12px;
+  }
+  
+  .hearder h2 {
+    color: var(--text-color);
+    font-size: 20px;
+  }
+  
+  .form-cd{
+      height: 64vh;
+  }
+  /* CD */
+  .cd {
+    display: flex;
+    margin: auto;
+    width: 230px;
+  }
+  .cd.playing{
+    will-change: transform;
+    animation: rotateThumb 10s linear infinite;
+    -webkit-animation: rotateThumb 10s linear infinite;
+  }
+  @keyframes rotateThumb {
+    from {
+        transform: rotate(0);
+    } to {
+        transform: rotate(360deg);
+    }
+  }
+
+  .cd-thumb {
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 50%;
+    background-color: #333;
+    background-size: cover;
+    margin: auto;
+  }
+  
+  /* CONTROL */
+  .control {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* padding: 18px 0 8px 0; */
+  }
+  
+  .control .btn {
+    color: #666;
+    padding: 18px;
+    font-size: 18px;
+  }
+  
+  .control .btn.active {
+    color: var(--primary-color);
+  }
+  
+  .control .btn-toggle-play {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+  }
+  
+  .progress {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 6px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
+  
+  .progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 6px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+  }
+  
+  /* PLAYLIST */
+  .listmusic-h2{
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .playlist {
+    height: 59vh;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+  /* xử lý thanh scrollbar */
+  .playlist::-webkit-scrollbar{
+    width: 6px;
+    display: none;
+  }
+  .playlist::-webkit-scrollbar-track{
+    border-radius: 10px;
+  }
+  .playlist::-webkit-scrollbar-thumb{
+    background: #666;
+    border-radius: 10px;
+  }
+  .song {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    background-color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .song.active {
+    background-color: var(--primary-color);
+  }
+  
+  .song:active {
+    opacity: 0.8;
+  }
+  
+  .song.active .option,
+  .song.active .author,
+  .song.active .title {
+    color: #fff;
+  }
+  
+  .song .thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-size: cover;
+    margin: 0 8px;
+  }
+  
+  .song .body {
+    flex: 1;
+    padding: 0 16px;
+  }
+  
+  .song .title {
+    font-size: 18px;
+    color: var(--text-color);
+  }
+  
+  .song .author {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .song .option {
+    padding: 16px 8px;
+    color: #999;
+    font-size: 18px;
+  }
+  
+  .footer{
+    margin-top:20px;
+    background-color:#14103bb0;
+    border-radius: 8px;
+  }
+  .footer-list{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  .footer-list__li{
+    font-size: 24px;
+  }
+  .footer-list__li i{
+    color: rgb(235, 224, 224);
+  }
+  .icon-list.activi-color{
+    color: #ec711f !important;
+  }

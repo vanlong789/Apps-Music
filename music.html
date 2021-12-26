@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="./css/style-music.css">
+</head>
+<body>
+    <div class="player">
+        <!-- Dashboard -->
+        <div class="dashboard">
+          <!-- Header -->
+          <header>
+             <div class="login">
+                 <ul class="login-list" onclick="checkLogin()">
+                     <li class="login-list__li">
+                         <div class="cd-thumb login-list__img" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')"></div>
+                     </li>
+                     <li class="login-list__li">
+                         <span class="login-list__span">NguyenLich</span>
+                     </li>
+                     <div class="postion">
+                         <p class="postion-out">Đăng xuất</p>
+                     </div>
+                 </ul>
+             </div>
+          </header>
+          <div class="container-scroll">
+            <div class="form-cd container-scroll__hinden">
+              <div class="hearder">
+                  <h4 id="human-music">Now playing:</h4>
+                  <h2 id="name-music">String 57th & 9th</h2>
+                </div>
+                <!-- CD -->
+                <div class="cd">
+                  <div class="cd-thumb js-thumb" style="background-image: url('./data/imgSong1/song1.jpg')">
+                  </div>
+                </div>
+            </div>
+            <div class="listmusic container-scroll__hinden">
+              <h2 class="listmusic-h2">Danh sách bài hát</h2>
+              <div class="playlist">
+               
+              </div>
+            </div>
+          </div>
+      
+          <!-- Control -->
+
+          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">    
+          <audio id="audio" src=""></audio>
+          <div class="control">
+            <div class="btn btn-repeat">
+              <i class="fas fa-redo"></i>
+            </div>
+            <div class="btn btn-prev">
+              <i class="fas fa-step-backward"></i>
+            </div>
+            <div class="btn btn-toggle-play">
+              <i class="fas fa-pause playing icon-pause"></i>
+              <i class="fas fa-play icon-play"></i>
+            </div>
+            <div class="btn btn-next">
+              <i class="fas fa-step-forward"></i>
+            </div>
+            <div class="btn btn-random">
+              <i class="fas fa-random"></i>
+            </div>
+          </div>
+          <div class="footer">
+              <ul class="footer-list">
+                  <li class="footer-list__li"><i class="icon-list fas fa-home" onclick="onTaskBar(0)"></i></li>
+                  <li class="footer-list__li"><i class="icon-list fas fa-dumbbell" onclick="onTaskBar(1)"></i></li>
+                  <li class="footer-list__li"><i class="icon-list fab fa-youtube" onclick="onTaskBar(2)"></i></li>
+                  <li class="footer-list__li"><i class="icon-list fas fa-sliders-h" onclick="onTaskBar(3)"></i></li>
+              </ul>
+          </div>
+        </div>
+      
+        <!-- Playlist -->
+      
+      </div>
+      <script src="./data/data.js"></script>
+      <script src="./javasprict/app-music.js"></script>
+</body>
+</html>
