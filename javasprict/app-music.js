@@ -381,8 +381,8 @@ if(callBackKeyLogin !== null){
                     }
                 })
                 logicMusic(checkDataName.Index);
-                console.log( checkDataName.Index);
-                console.log( indexDataNode);
+                //console.log( checkDataName.Index);
+                //console.log( indexDataNode);
                 for(let i = 0; i < callIndexMusic.querySelectorAll('.song').length ; i++){
                     const removeClild = callIndexMusic.querySelectorAll('.song')[i];
                     removeClild.classList.remove('active');
