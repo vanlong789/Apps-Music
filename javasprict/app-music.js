@@ -23,10 +23,32 @@ const nameKeyLogin = document.querySelector('.login-list__span');
 const postionOut = document.querySelector('.postion');
 
 
+
+const dashboard = document.querySelector('.dashboard');
+const buttonCheck = document.querySelector('.login-check__button');
+const logincheck = document.querySelector('.login-check');
+const searchInput = document.querySelector('.listSearch-input');
+const callIndexMusic = document.querySelector('.listMusic-call');
+
+const clockMusic = document.querySelector('.clockMusic');
+const clickClock = document.querySelector('.listClock-link');
+
+
+
 const fromArray = [];
 const KEY_FROM = 'CKT_ARRAY';//tạo 1 biến key
 const CALL_KEY_LOGIN = 'KEY_LOGIN'
 const callBackKeyLogin = JSON.parse(localStorage.getItem(CALL_KEY_LOGIN))
+const getFormIndex = JSON.parse(localStorage.getItem(KEY_FROM))
+
+
+//xử lý bật tắt đổi màu background
+logincheck.onclick = function(){
+    buttonCheck.classList.toggle('open');
+    dashboard.classList.toggle('open');
+}
+
+
 
 
 //nếu callBackeyLogin này mà khác null login bên trong sẽ được thực hiện
@@ -69,7 +91,7 @@ if(callBackKeyLogin !== null){
  }
 
  function logicTabskBar(input){
-    if(input <= 1){
+    if(input <= 3){
         let i;
     for(i = 0; i<containerList.length; i++){
         containerList[i].style.display = "none";
@@ -167,6 +189,7 @@ if(callBackKeyLogin !== null){
        fromArray.push(number);
        localStorage.setItem(KEY_FROM,JSON.stringify(fromArray))
     },1000)
+
  }
 
 
@@ -263,9 +286,18 @@ if(callBackKeyLogin !== null){
     audioMusic.onended = function(){
         if(audioMusic.currentTime == audioMusic.duration){
             n++;
-            editMusic(n);
-            audioMusic.play();
-            audioMusic.currentTime = 1;            
+            if(n > songMusic.length - 1){
+                n = 0;
+                editMusic(n);
+                audioMusic.currentTime = 1;
+                audioMusic.pause()
+                playIcon.classList.remove('playing');
+                cdMusic.classList.remove('playing');
+            }else{
+                editMusic(n);
+                audioMusic.currentTime = 1;
+                audioMusic.play();   
+            }        
         }
     }
      editMusic(n)
@@ -273,6 +305,7 @@ if(callBackKeyLogin !== null){
 
 
 
+ //***************************************************** */
  //***************************************************** */
 
  // xử lý chọn bài hát trong danh sách
@@ -301,9 +334,104 @@ if(callBackKeyLogin !== null){
 
  clickMusic()
 
- 
+
+    // xử lý phần tìm kiếm bài hát
+
+    function searchMusicIndex(indexValue){
+        // dùng hàm filter để tìm kiếm nếu tìm thấy cái phần tử giống nhau sẽ được in ra
+        const filterIndex = songMusic.filter(value => {
+            if(indexValue.toLowerCase() === value.name.toLowerCase() || indexValue.toLowerCase() === value.singer.toLowerCase()){
+                return true;
+            }else{
+                return false;
+            }
+        })
+        //nếu filter bằng false tức là trong mảng đó o có phần tử nó yên cho mình một cái thông tin
+        if(filterIndex.length === 0){
+            callIndexMusic.innerHTML = "Không tìm thấy bài hát!!!"
+        }else{//ngược lại nếu bằng true nó sẽ ra danh sách cho mình
+            const mapIndex = filterIndex.map((value,index) =>{
+                return `
+                     <div class="song song-callback" index-data="${index}" data-name="${value.name}">
+                        <div class="thumb thumb-callback" style="background-image: url('${value.image}')">
+                        </div>
+                        <div class="body">
+                          <h3 class="title title-callback">${value.name}</h3>
+                          <p class="author author-callback">${value.singer}</p>
+                        </div>
+                    </div>
+                `;
+            })
+            callIndexMusic.innerHTML = mapIndex.join("");
+        }
+
+        //khi bạn click vào bài hát được tìm kiếm nó sẽ in cho bạn một cái attchibiu
+        callIndexMusic.onclick = function(e){
+            const searchIndexcallBackMusic = e.target.closest('.song:not(.active)')
+            //nếu không cick vào bài hát đc active thì nó sẽ dược loạt vào
+            if(searchIndexcallBackMusic){   
+                const indexDataNode = Number(searchIndexcallBackMusic.getAttribute('index-data')); 
+                const getDataNode = callIndexMusic.querySelectorAll('.song')[indexDataNode];          
+                const valueDataName = searchIndexcallBackMusic.getAttribute('data-name');   
+                //dùng array find để tìm kiếm trong array list music          
+                const checkDataName = songMusic.find((value,index) =>{
+                    if(value.name === valueDataName){
+                        value.Index = index;
+                        return true;                       
+                    }
+                })
+                logicMusic(checkDataName.Index);
+                console.log( checkDataName.Index);
+                console.log( indexDataNode);
+                for(let i = 0; i < callIndexMusic.querySelectorAll('.song').length ; i++){
+                    const removeClild = callIndexMusic.querySelectorAll('.song')[i];
+                    removeClild.classList.remove('active');
+                }
+                getDataNode.classList.add('active');    
+                audioMusic.play();
+                playIcon.classList.add('playing');
+                cdMusic.classList.add('playing');           
+            }            
+        }
+    }
+
+    searchInput.onchange = function(){
+        searchMusicIndex(searchInput.value)
+    } 
+
+
+
+    //xử lí lịch sử đã nghe nhạc
+    if(getFormIndex !== null && getFormIndex.length > 1){
+        for(let i=0;i < getFormIndex.length - 1;i++){
+            fromArray.push(getFormIndex[i]);
+        }
+    }
+
+    const clockIndex = getFormIndex.map(index => {
+        return `
+            <div class="song song-callback">
+                <div class="thumb thumb-callback" style="background-image: url('${songMusic[index].image}')"></div>
+                <div class="body">
+                    <h3 class="title title-callback">${songMusic[index].name}</h3>
+                    <p class="author author-callback">${songMusic[index].singer}</p>
+                </div>
+            </div>
+        `
+    })
+    
+    clockMusic.innerHTML = clockIndex.join("");
+
+
+    clickClock.onclick = function(){
+        clockMusic.classList.toggle('open');
+    }
+
+
+
+
+
  // xử lý điều kiện ( sau khi load trang lại nó vẫn liệu lại bài hát đã nghe)
- const getFormIndex = JSON.parse(localStorage.getItem(KEY_FROM))
     if(getFormIndex === null){
         logicMusic(0);
     }else{

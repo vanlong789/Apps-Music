@@ -29,6 +29,9 @@
                          <p class="postion-out">Đăng xuất</p>
                      </div>
                  </ul>
+                 <div class="login-check">
+                  <button class="login-check__button"></button>
+                 </div>
              </div>
           </header>
           <div class="container-scroll">
@@ -47,6 +50,32 @@
               <h2 class="listmusic-h2">Danh sách bài hát</h2>
               <div class="playlist">
                
+              </div>
+            </div>
+            <div class="listSearch container-scroll__hinden">
+              <div class="listSearch-search">
+                <i class="listSearch-icon fas fa-search"></i>
+                <input type="text" class="listSearch-input" placeholder="Tìm kiếm bài hát">
+              </div>
+              <div class="listMusic-call">
+               
+              </div>
+            </div>
+            <div class="listClock container-scroll__hinden">
+              <div class="listClock-link">
+                <i class="fas fa-history"></i>
+                <span class="listClock-span">Lịch sử đã nghe</span>
+              </div>
+
+              <div class="clockMusic">
+                <div class="song song-callback">
+                  <div class="thumb thumb-callback" style="background-image: url('./data/imgSong1/song1.jpg')">
+                  </div>
+                  <div class="body">
+                    <h3 class="title title-callback">xin một lần ngoại lệ</h3>
+                    <p class="author author-callback">Văn Lịch</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -78,7 +107,7 @@
                 <ul class="footer-list">
                     <li class="footer-list__li"><i class="icon-list fas fa-home" onclick="onTaskBar(0)"></i></li>
                     <li class="footer-list__li"><i class="icon-list fas fa-dumbbell" onclick="onTaskBar(1)"></i></li>
-                    <li class="footer-list__li"><i class="icon-list fab fa-youtube" onclick="onTaskBar(2)"></i></li>
+                    <li class="footer-list__li"><i class="icon-list fas fa-search" onclick="onTaskBar(2)"></i></li>
                     <li class="footer-list__li"><i class="icon-list fas fa-sliders-h" onclick="onTaskBar(3)"></i></li>
                 </ul>
             </div>

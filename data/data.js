@@ -27,7 +27,7 @@ var listSong =
     },
     {
         name: "Mama Boy",
-        singer: ["AMEE"],
+        singer: "AMEE",
         path: "./data/listSong1/song5.mp3",
         image: "./data/imgSong1/song5.jpg"
     },
