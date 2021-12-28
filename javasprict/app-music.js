@@ -408,30 +408,29 @@ if(callBackKeyLogin !== null){
         }
     }
 
-    const clockIndex = getFormIndex.map(index => {
-        return `
-            <div class="song song-callback">
-                <div class="thumb thumb-callback" style="background-image: url('${songMusic[index].image}')"></div>
-                <div class="body">
-                    <h3 class="title title-callback">${songMusic[index].name}</h3>
-                    <p class="author author-callback">${songMusic[index].singer}</p>
+    if(getFormIndex !== null){
+        const clockIndex = getFormIndex.map(index => {
+            return `
+                <div class="song song-callback">
+                    <div class="thumb thumb-callback" style="background-image: url('${songMusic[index].image}')"></div>
+                    <div class="body">
+                        <h3 class="title title-callback">${songMusic[index].name}</h3>
+                        <p class="author author-callback">${songMusic[index].singer}</p>
+                    </div>
                 </div>
-            </div>
-        `
-    })
-    
-    clockMusic.innerHTML = clockIndex.join("");
-
+            `
+        })
+        
+        clockMusic.innerHTML = clockIndex.join("");
+    }
 
     clickClock.onclick = function(){
         clockMusic.classList.toggle('open');
     }
 
 
-
-
-
  // xử lý điều kiện ( sau khi load trang lại nó vẫn liệu lại bài hát đã nghe)
+    //console.log(getFormIndex)
     if(getFormIndex === null){
         logicMusic(0);
     }else{
