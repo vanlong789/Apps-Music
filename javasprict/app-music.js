@@ -32,14 +32,17 @@ const callIndexMusic = document.querySelector('.listMusic-call');
 
 const clockMusic = document.querySelector('.clockMusic');
 const clickClock = document.querySelector('.listClock-link');
-
+const toptreding = document.querySelector('.top-graph__block');
 
 
 const fromArray = [];
+const arrayTopTreding = [];
+const TRENDING_MUSIC = 'TRENDING_MUSIC'
 const KEY_FROM = 'CKT_ARRAY';//tạo 1 biến key
 const CALL_KEY_LOGIN = 'KEY_LOGIN'
 const callBackKeyLogin = JSON.parse(localStorage.getItem(CALL_KEY_LOGIN))
 const getFormIndex = JSON.parse(localStorage.getItem(KEY_FROM))
+
 
 
 //xử lý bật tắt đổi màu background
@@ -91,7 +94,7 @@ if(callBackKeyLogin !== null){
  }
 
  function logicTabskBar(input){
-    if(input <= 3){
+    if(input <= 4){
         let i;
     for(i = 0; i<containerList.length; i++){
         containerList[i].style.display = "none";
@@ -189,6 +192,74 @@ if(callBackKeyLogin !== null){
        fromArray.push(number);
        localStorage.setItem(KEY_FROM,JSON.stringify(fromArray))
     },1000)
+
+
+
+
+    // xử lí bảng xếp hảng bài hát
+    setTimeout(function(){
+        arrayTopTreding.splice(0,arrayTopTreding.length);
+    },1000)
+   setTimeout(function(){
+        const getArrayStorage = JSON.parse(localStorage.getItem(KEY_FROM))
+
+    //đếm số lần xuất hiện trong array
+        function count_element_in_array(array, x){
+            let count = 0;
+            for(let i=0;i<array.length;i++){
+                if(array[i]==x) //Tìm thấy phần tử giống x trong mảng thì cộng biến đếm
+                count ++;
+            }
+            arrayTopTreding.push({
+                IndexSong: `${x}`,
+                repeatSong: `${count}`
+            })
+
+            localStorage.setItem(TRENDING_MUSIC,JSON.stringify(arrayTopTreding))
+            // sắp xếp giảm dân array trong mảng arraytoptreding
+            const getTrendingMusic = JSON.parse(localStorage.getItem(TRENDING_MUSIC))
+            setTimeout(function(){
+                const sortArrayStorage = getTrendingMusic.sort((a,b) =>{
+                    return b.repeatSong - a.repeatSong;
+                })
+                
+                //dung array map để lặp và in ra màn hình
+                const mapArraySort = sortArrayStorage.map((value,index) => {
+                    return `
+                    <div class="song" data-index="">
+                        <div class="top-graph__noti">
+                            <h2>${index + 1}</h2>
+                        </div>
+                        <div class="thumb" style="background-image: url('${songMusic[value.IndexSong].image}')"></div>
+                        <div class="body">
+                            <h3 class="title">${songMusic[value.IndexSong].name}</h3>
+                            <p class="author">${songMusic[value.IndexSong].singer}</p>
+                        </div>
+                        <div class="option-trending">
+                            <span class="option-span">${value.repeatSong}</span>
+                            <i class="bi bi-heart-fill"></i>
+                        </div>
+                    </div>
+                    `
+                })
+                toptreding.innerHTML = mapArraySort.join("");//in ra màn hình html
+            },1000)
+        }
+    /*Xóa phần tử trùng nhau và lấy các phần tử duy nhất*/
+        let arrayWithNoDuplicates = getArrayStorage.reduce(function (accumulator, element) {
+        if (accumulator.indexOf(element) === -1) {
+            accumulator.push(element)
+        }
+            return accumulator
+        }, [])
+    
+    
+    /*đếm số lần xuất hiện của các phần tử duy nhất*/
+        for (let i = 0; i < arrayWithNoDuplicates.length; i++){
+            count_element_in_array(getArrayStorage, arrayWithNoDuplicates[i]);
+        } 
+            
+   },1000)
 
  }
 
