@@ -246,6 +246,47 @@ var listSong =
         singer: "Soobin - Binz",
         path: "./data/listSong2/song20.webm",
         image: "./data/imgSong2/song20.jpg"
+    },
+    {
+        name: "Đường tôi chở em về",
+        singer: "Bùi trương linh",
+        path: "./data/listSong3/song1.mp3",
+        image: "./data/imgSong3/song1.jpg"
+    },
+    {
+        name: "Ai Chung Tình Được Mãi",
+        singer: "Đinh Tùng Huy",
+        path: "./data/listSong3/song2.mp3",
+        image: "./data/imgSong3/song2.jpg"
+    },
+    {
+        name: "Không Sao Em À",
+        singer: "Đinh Tùng Huy",
+        path: "./data/listSong3/song3.mp3",
+        image: "./data/imgSong3/song3.jpg"
+    },
+    {
+        name: "Không Đáng Để Thương",
+        singer: "Đinh Tùng Huy",
+        path: "./data/listSong3/song4.mp3",
+        image: "./data/imgSong3/song4.jpg"
+    },{
+        name: "Yêu Em Thật Đấy",
+        singer: "Đinh Tùng Huy",
+        path: "./data/listSong3/song5.mp3",
+        image: "./data/imgSong3/song5.jpg"
+    },
+    {
+        name: "Không Cần Hỏi Thăm",
+        singer: "Đinh Tùng Huy",
+        path: "./data/listSong3/song6.mp3",
+        image: "./data/imgSong3/song6.jpg"
+    },
+    {
+        name: "Người Lạ Thoáng Qua",
+        singer: "Đinh Tùng Huy",
+        path: "./data/listSong3/song7.mp3",
+        image: "./data/imgSong3/song7.jpg"
     }
 ];
 const MUSIC_STORAGE_KEY = 'CKT_MUSIC';
