@@ -287,6 +287,12 @@ var listSong =
         singer: "Đinh Tùng Huy",
         path: "./data/listSong3/song7.mp3",
         image: "./data/imgSong3/song7.jpg"
+    },
+    {
+        name: "Liên Khúc Thất Tình(Piano)",
+        singer: "Trịnh Đình Quang",
+        path: "./data/listSong3/song8.mp3",
+        image: "./data/imgSong3/song8.jpg"
     }
 ];
 const MUSIC_STORAGE_KEY = 'CKT_MUSIC';
